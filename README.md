@@ -1,5 +1,5 @@
 # BasicGo
-This repository has subfolders in which the basic themes of Go are worked.
+Este repositorio cuenta con subcarpetas en las cuáles se trabajan los temás básicos de Go. 
 
 #CURSO OBTENIDO DE: https://www.youtube.com/playlist?list=PLpOqH6AE0tNiuc0qiAcKdlaJBASZ9W2Yn
 #Curso dictado por Código Fácilito

@@ -27,9 +27,14 @@ func (this Admin) Nombre() string {
 	la interfaz
 */
 func auth(user User) string {
-	content := user.Nombre() + " no tiene permisos de administrador"
-	if user.Permisos() > 4 {
+	var content string
+	switch user.Permisos() {
+	case 3:
+		content = user.Nombre() + " tiene permisos de editor"
+	case 5:
 		content = user.Nombre() + " tiene permisos de administrador"
+	default:
+		content = user.Nombre() + " tiene permisos básicos"
 	}
 	return content
 }
@@ -57,15 +62,28 @@ func (this Editor) Nombre() string {
 */
 
 func main() {
-	admin := Admin{"Edd"}
-	fmt.Println(auth(admin)) //Observemos que aunque el metodo auth solicita un tipo User nosotros pasamos un tipo Admin
-	//Esto es porque Admin implementa la inferfaz User y esto lo hace completamente válido
-	editor := Editor{"Dan"}
-	fmt.Println(auth(editor))
+
+	/*
+
+		admin := Admin{"Edd"}
+		fmt.Println(auth(admin)) //Observemos que aunque el metodo auth solicita un tipo User nosotros pasamos un tipo Admin
+		//Esto es porque Admin implementa la inferfaz User y esto lo hace completamente válido
+		editor := Editor{"Dan"}
+		fmt.Println(auth(editor))
+
+	*/
+
+	//TODO EL ANTERIOR CÓDIGO SE PUDO RESUMIR EN:
+	usuarios := []User{Admin{"Edd"}, Editor{"Dan"}} //Como implemementar un arreglo de estructuras que corresponden a una interfaz
+
+	for _, usuario := range usuarios {
+		fmt.Println(auth(usuario))
+	}
 
 	/*
 		$ go run interfaces.go
 		Edd tiene permisos de administrador
 		Dan no tiene permisos de administrador
 	*/
+
 }
